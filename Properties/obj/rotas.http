@@ -1,0 +1,79 @@
+@baseUrl = http://localhost:5070
+@usuarioId = 1
+@chamadoId = 1
+@token = COLE_O_TOKEN_RETORNADO_PELO_LOGIN_AQUI
+
+### Login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "teste.gestao@example.com",
+  "senha": "senha123"
+}
+
+### Listar usuários
+GET {{baseUrl}}/usuarios
+Authorization: Bearer {{token}}
+
+### Cadastrar usuário de teste
+POST {{baseUrl}}/cadastro
+Content-Type: application/json
+
+{
+  "nome": "Usuário de Teste",
+  "email": "teste.gestao@example.com",
+  "departamento": "Tecnologia",
+  "senha": "senha123"
+}
+
+### Criar chamado
+POST {{baseUrl}}/chamados
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "titulo": "Falha no sistema",
+  "descricao": "O sistema apresenta erro ao abrir a tela inicial.",
+  "tipo": "Incidente",
+  "chamadoStatus": "Aberto",
+  "prioridade": "Alta",
+  "dataAbertura": "2026-10-14",
+  "usuario_id": {{usuarioId}}
+}
+
+### Listar chamados
+GET {{baseUrl}}/chamados
+Authorization: Bearer {{token}}
+
+### Consultar chamado
+GET {{baseUrl}}/chamados/{{chamadoId}}
+Authorization: Bearer {{token}}
+
+### Atualizar status
+PUT {{baseUrl}}/chamados/{{chamadoId}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status": "Em andamento"
+}
+
+### Consultar histórico
+GET {{baseUrl}}/chamados/{{chamadoId}}/historico
+Authorization: Bearer {{token}}
+
+### Adicionar anotação ao histórico
+POST {{baseUrl}}/chamados/{{chamadoId}}/historico
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "descricao": "Chamado recebido pela equipe de suporte.",
+  "responsavel_id": {{usuarioId}},
+  "data_evento": "2026-10-14"
+}
+
+### Caminho de erro: chamado inexistente
+GET {{baseUrl}}/chamados/999999
+Authorization: Bearer {{token}}
