@@ -1,0 +1,10 @@
+<Project>
+  <!-- Inclui as pastas originais sem alterar os arquivos existentes do projeto. -->
+  <PropertyGroup>
+    <LaunchSettingsFilePath>$(MSBuildThisFileDirectory)../Properties/launchSettings.json</LaunchSettingsFilePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)../Controller/**/*.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)../Model/**/*.cs" />
+  </ItemGroup>
+</Project>

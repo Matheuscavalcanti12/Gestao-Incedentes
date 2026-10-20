@@ -65,11 +65,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // Configura o MySQL e verifica se a coluna de senha existe.
 CreateConnection.ConnectionString = builder.Configuration.GetConnectionString("GestaoIncedentes")
-    ?? string.Empty;
-if (string.IsNullOrWhiteSpace(CreateConnection.ConnectionString))
-{
-    throw new InvalidOperationException("Configure ConnectionStrings:GestaoIncedentes antes de iniciar a API.");
-}
+    ?? "Server=localhost;Port=3306;Database=GestaoIncedentes;User ID=root;Password=;SslMode=None;AllowPublicKeyRetrieval=True";
 CreateConnection.EnsurePasswordColumn();
 
 var app = builder.Build();

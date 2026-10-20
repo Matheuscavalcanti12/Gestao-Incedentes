@@ -6,7 +6,7 @@
     <InvariantGlobalization>false</InvariantGlobalization>
     <NoWarn>$(NoWarn);CS8981</NoWarn>
     <RootNamespace>GestaoIncedentes</RootNamespace>
-    <!-- Ignora arquivos gerados pela compilação. -->
+    <!-- Ignora arquivos de compilação, inclusive os antigos dentro de Properties. -->
     <DefaultItemExcludes>$(DefaultItemExcludes);**/bin/**;**/obj/**</DefaultItemExcludes>
   </PropertyGroup>
 
